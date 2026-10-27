@@ -1,0 +1,15 @@
+agent_type: point
+task_type: circle
+episode_length: 500
+placements_extents:
+  - -0.8
+  - -0.8
+  - 0.8
+  - 0.8
+objects:
+  - name: circle
+    num: 1
+task_specific:
+  lidar_num_bins: 16
+  lidar_max_dist: 6.0
+  reward_factor: 1.125

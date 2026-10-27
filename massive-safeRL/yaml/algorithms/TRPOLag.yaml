@@ -1,0 +1,48 @@
+train:
+  total_steps: 10000000
+  rollout_steps_per_update: 20000
+  update_epochs: 10
+  update_batch_size: 128
+  rollout_mode: "standard"
+network:
+  hidden_sizes: [64, 64]
+  activation: tanh
+  layer_norm: false
+  weight_init: kaiming_uniform
+  obs_normalize: true
+  max_grad_norm: 40.0
+  use_critic_norm: true
+  critic_norm_coef: 0.001
+  critic_hidden_sizes: null
+  critic_activation: null
+  critic_weight_init: null
+  critic_layer_norm: null
+estimator:
+  advantage:
+    type: gae
+    reward_lambda: 0.95
+    cost_lambda: 0.95
+  gamma: 0.99
+  adv_standardize: true
+algo:
+  cg_damping: 0.1
+  cg_max_iters: 15
+  line_search_max_iter: 10
+  line_search_coeff: 0.8
+  target_kl: 0.01
+  entropy_coef: 0.0
+  critic_lr: 0.001
+cost:
+  use_cost: true
+  discounted: false
+  constraint_tightening_mode: "off"
+  tightening_delta_conf: 0.05
+  tightening_max: .inf
+lagrange:
+  lagrange_lr: 0.035
+  lagrange_multiplier_init: 0.001
+logging:
+  use_wandb: true
+  log_interval: 1
+meta:
+  policy_type: on_policy

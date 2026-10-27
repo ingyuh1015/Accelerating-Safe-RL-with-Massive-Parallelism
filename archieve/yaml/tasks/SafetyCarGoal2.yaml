@@ -1,0 +1,25 @@
+agent_type: car
+task_type: goal
+episode_length: 1000
+placements_extents:
+  - -2.0
+  - -2.0
+  - 2.0
+  - 2.0
+objects:
+  - name: goal
+    num: 1
+  - name: hazards
+    num: 10
+  - name: vases
+    num: 10
+constraints:
+  - name: hazards
+    cost_limit: 25.0
+    type: binary
+  - name: vases
+    cost_limit: 25.0
+    type: binary
+task_specific:
+  lidar_num_bins: 16
+  lidar_max_dist: 3.0

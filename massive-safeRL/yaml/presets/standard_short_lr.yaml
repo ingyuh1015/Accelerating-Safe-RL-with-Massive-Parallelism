@@ -1,0 +1,10 @@
+rollout_mode: "standard"
+num_envs: 2000
+rollout_horizon_override: 10
+discounted: false
+cost_surrogate: false
+cost_signal_source: "terminal_recent_raw"
+advantage:
+  type: gae
+  reward_lambda: 0.95
+  cost_lambda: 0.95

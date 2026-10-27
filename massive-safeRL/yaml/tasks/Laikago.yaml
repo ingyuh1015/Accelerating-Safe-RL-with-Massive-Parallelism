@@ -1,0 +1,19 @@
+source: mjx_locomotion
+agent_type: laikago
+task_type: locomotion
+episode_length: 500
+frame_skip: 10
+is_earlystop: false
+lin_vel_cmd_range: [-1.0, 2.0]
+ang_vel_cmd_range: [-0.5, 0.5]
+reward_weights: [0.1, 0.0001]
+constraints:
+  - name: body_angle
+    cost_limit: 12.5
+    source_index: 0
+  - name: com_height
+    cost_limit: 12.5
+    source_index: 1
+  - name: foot_timing
+    cost_limit: 200.0
+    source_index: 2

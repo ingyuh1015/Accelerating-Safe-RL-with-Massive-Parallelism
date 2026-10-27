@@ -1,0 +1,8 @@
+rollout_mode: "staggered"
+num_envs: 2000
+advantage:
+  type: nstep
+  reward_lambda: 1.0
+  cost_lambda: 1.0
+discounted: false
+adv_standardize: true

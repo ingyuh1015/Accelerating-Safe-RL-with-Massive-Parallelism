@@ -1,0 +1,55 @@
+<mujoco>
+  <option timestep="0.004"/>
+  <default>
+    <geom condim="6" density="5" rgba="0.7412 0.0431 0.1843 1" size=".05" type="sphere"/>
+    <joint damping=".001"/>
+    <motor ctrlrange="-1 1" ctrllimited="true" forcerange="-.02 .02" forcelimited="true"/>
+    <site size="0.032" type="sphere"/>
+  </default>
+  <asset>
+    <texture type="2d" name="groundplane" builtin="checker" mark="edge"
+             rgb1="0.859 0.843 0.765" rgb2="0.949 0.914 0.855" markrgb="0.8 0.8 0.8"
+             width="100" height="100"/>
+    <material name="groundplane" texture="groundplane" texuniform="true"
+              texrepeat="10 10" reflectance="0.1"/>
+  </asset>
+  <worldbody>
+    <light name="top" pos="0 0 0.5" dir="0 0 -1" directional="true" diffuse="1 1 1" specular="0 0 0"/>
+    <geom name="floor" size="5 5 0.1" type="plane" condim="6" conaffinity="3" material="groundplane" rgba="1 1 1 1"/>
+    <body name="agent" pos="0 0 .1">
+      <site name="agent" pos="0 0 0"/>
+      <camera name="vision" pos="0 0.1 .2" xyaxes="-1 0 0 0 -.4 1"/>
+      <camera name="track" pos="0 -3 3" xyaxes="1 0 0 0 0.7 0.7" mode="trackcom"/>
+      <joint type="free" name="agent" damping="0"/>
+      <geom name="agent" type="box" size=".1 .1 .05" conaffinity="3"/>
+      <geom name="back_bumper" type="box" pos="0 .15 0" size=".1 .01 .05" rgba="0.0039 0.1529 0.3961 1" contype="0" conaffinity="0"/>
+      <geom name="back_connector" type="box" pos="0 .125 0" size=".01 .025 .03" rgba="0.0039 0.1529 0.3961 1" contype="0" conaffinity="0"/>
+      <geom name="front_bumper" type="box" pos="0 -.165 0" size=".05 .01 .05" rgba="0.0039 0.1529 0.3961 1" contype="0" conaffinity="0"/>
+      <geom name="front_connector" type="box" pos="0 -.13 .04" size=".05 .03 .01" rgba="0.0039 0.1529 0.3961 1" contype="0" conaffinity="0"/>
+      <body name="left" pos="-.1 .1 -.05">
+        <joint type="hinge" name="left" axis="1 0 0"/>
+        <geom type="capsule" name="left" fromto="-.055 0 0 -0.005 0 0" conaffinity="3"/>
+      </body>
+      <body name="right" pos=".1 .1 -.05">
+        <joint type="hinge" name="right" axis="1 0 0"/>
+        <geom type="capsule" name="right" fromto="0.005 0 0 .055 0 0" conaffinity="3"/>
+      </body>
+      <body name="rear" pos="0 -.1 -.05">
+        <joint name="rear" type="ball"/>
+        <geom name="rear" conaffinity="3"/>
+      </body>
+    </body>
+  </worldbody>
+  <sensor>
+    <ballquat joint="rear" name="ballquat_rear"/>
+    <ballangvel joint="rear" name="ballangvel_rear"/>
+    <accelerometer site="agent" name="accelerometer"/>
+    <velocimeter site="agent" name="velocimeter"/>
+    <gyro site="agent" name="gyro"/>
+    <magnetometer site="agent" name="magnetometer"/>
+  </sensor>
+  <actuator>
+    <motor gear="1" jointinparent="left" name="left"/>
+    <motor gear="1" jointinparent="right" name="right"/>
+  </actuator>
+</mujoco>
