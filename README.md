@@ -1,6 +1,6 @@
 # Accelerating Safe Reinforcement Learning with Massive Parallelism
 
-CPO, CRPO, and TRPOLag with MuJoCo MJX and MuJoCo Warp.
+Official Github Repository for "Accelerating Safe Reinforcement Learning with Massive Parallelism". (NeurIPS 2026)
 
 ## Setup
 
