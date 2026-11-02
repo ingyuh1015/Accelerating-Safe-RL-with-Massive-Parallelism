@@ -72,6 +72,13 @@ python -m massive_saferl eval_warp \
 
 Warp saves evaluation JSON and MP4 files under `$RUN_DIR/eval_warp/`. MJX saves the video under `$RUN_DIR/eval/`. To evaluate without rendering, replace `--render-grid 2x2` with `--episodes 100 --num-envs 100`.
 
+
+
+
 ## License
 
 [MIT License](LICENSE). Third-party code and assets retain their existing licenses.
+
+## Ackn
+This research was supported by Cloud TPU resources provided by [Google TPU Research Cloud](https://sites.research.google/trc/about/) program.
+We sincerely thank the TRC team for their generous and continuous support.
