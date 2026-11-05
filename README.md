@@ -2,6 +2,11 @@
 
 Official Github Repository for "Accelerating Safe Reinforcement Learning with Massive Parallelism". (NeurIPS 2026)
 
+## Acknowledgment
+This research was supported by Cloud TPU resources provided by [Google TPU Research Cloud](https://sites.research.google/trc/about/) program.
+We sincerely thank the TRC team for their generous and continuous support.
+
+
 ## Setup
 
 Run from the repository root on Linux or WSL2:
@@ -79,6 +84,4 @@ Warp saves evaluation JSON and MP4 files under `$RUN_DIR/eval_warp/`. MJX saves 
 
 [MIT License](LICENSE). Third-party code and assets retain their existing licenses.
 
-## Ackn
-This research was supported by Cloud TPU resources provided by [Google TPU Research Cloud](https://sites.research.google/trc/about/) program.
-We sincerely thank the TRC team for their generous and continuous support.
+
